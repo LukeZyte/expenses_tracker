@@ -20,6 +20,13 @@ class _NewTransactionState extends State<NewTransaction> {
   final _amountController = TextEditingController();
   late DateTime _selectedDate = DateTime.now();
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    // super -> refers to parent class. (State object)
+    super.initState();
+  }
+
   void _submitData() {
     if (_amountController.text.isEmpty) {
       return;
@@ -92,7 +99,17 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                    AdaptiveButton('Choose Date', _percentDatePicker)
+                    FlatButton(
+                      onPressed: _percentDatePicker,
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                    //AdaptiveButton('Choose Date', _percentDatePicker)
                   ],
                 ),
               ),
